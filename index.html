@@ -77,9 +77,9 @@ async function getAuth0() {
 	
 	try {
 		const request = await fetch(url_login, parameters); 
-		if (!request.ok) {
-			throw new Error(`Ошибка, статус: ${request.status}`);
-		}
+		//if (!request.ok) {
+		//	throw new Error(`Ошибка, статус: ${request.status}`);
+		//}
 		const result = await request.text();
 		const json = result === "" ? {} : JSON.parse(result);
 		console.log(json);
