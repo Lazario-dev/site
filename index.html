@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Мой сайт</title>
+</head>
+
+<body>
+
+
+<div>
+	<h2>Описание и справочные данные</h2>
+	<dl>
+	  <dt>Наименование:</dt>
+	  <dd>Общероссийский классификатор видов экономической деятельности</dd>
+
+	  <dt>Аббревиатура:</dt>
+	  <dd>ОКВЭД 2</dd>
+	</dl>
+</div>
+
+<div>
+	<h2>Структура кодов ОКВЭД</h2>
+	<p>Коды ОКВЭД состоят из 2—6 цифр. Если через Х обозначить символы в коде, структура будет такая:</p>
+	<ul>
+		<li>XX, т. е. первые две цифры, обозначают класс;</li>
+		<li>XX.X - подкласс;</li>
+		<li>XX.XX - группу;</li>
+		<li>XX.XX.X - подгруппу;</li>
+		<li>XX.XX.XX - вид.</li>
+	</ul>
+</div>
+
+<div>
+	<h4>Раздел А - СЕЛЬСКОЕ, ЛЕСНОЕ ХОЗЯЙСТВО, ОХОТА, РЫБОЛОВСТВО И РЫБОВОДСТВО</h4>
+	<ul>
+		<li>
+			<details>
+				<summary>01 - Растениеводство и животноводство, охота и предоставление соответствующих услуг в этих областях</summary>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>02 - Лесоводство и лесозаготовки</summary>
+			</details>
+		</li>
+	</ul>
+</div>
+
+<script>
+// https://www.cyberforum.ru/javascript-beginners/thread2874539.html
+async function getAuth0() {
+
+	const data = {
+		'username': 'anonymous',
+		'password': 'hrgesf7HDR67Bd'
+	};
+
+	const headers = new Headers({
+		'Content-Type': 'application/json',
+		'Accept': 'application/json, text/plain, */*',
+		'Authorization': 'Bearer null',
+		'Referer': 'https://pub.fsa.gov.ru/rds/declaration',
+		'Cache-Control': 'no-cache',
+		'Pragma': 'no-cache'
+});
+
+	const url_login = 'https://pub.fsa.gov.ru/login';
+	const parameters = {
+		method: 'POST',
+		cache: 'no-cache',
+		mode: 'cors',
+		headers: headers,
+		body: JSON.stringify(data),
+	};
+	
+	try {
+		const request = await fetch(url_login, parameters); 
+		if (!request.ok) {
+			throw new Error(`Ошибка, статус: ${request.status}`);
+		}
+		const result = await request.text();
+		const json = result === "" ? {} : JSON.parse(result);
+		console.log(json);
+	} catch (error) {
+		console.error(error.message);
+	}
+}  
+
+getAuth0();
+
+//Bearer eyJhbGciOiJFZERTQSJ9.
+//       eyJpc3MiOiJGQVUgTklBIiwic3ViIjoiYW5vbnltb3VzIiwiZXhwIjoxNzYxMjUwMDI5LCJpYXQiOjE3NjEyMjEyMjl9.
+//       wzgwNjQXG6sxixhDZ0cMyGjPi_wjKiQ8nrjiZ5kjBC3FHRuJPUu61V2PPOccYnjGoPy15pdDy4HH5nc8WvlJBw
+
+</script>
+
+</body>
+</html>
